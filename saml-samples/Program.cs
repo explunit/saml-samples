@@ -32,8 +32,8 @@ namespace saml_samples
 
 			var signingCert = new X509Certificate2( @"C:\Dev\STS.pfx", "somepassword" );
 			var assertionHelper = new AssertionHelper( signingCert );
-			var encryptedAssertion = assertionHelper.SignAssertion( assertion );
-			var fullResponse = string.Format( response, Guid.NewGuid().ToString(), encryptedAssertion );
+			var signedAssertion = assertionHelper.SignAssertion( assertion );
+			var fullResponse = string.Format( response, Guid.NewGuid().ToString(), signedAssertion );
 
 			File.WriteAllText( @"C:\dev\samlResponse.xml", fullResponse );
 		}
